@@ -65,7 +65,7 @@ import cats.implicits._
 import JsonWriterInstances._
 import JsonSyntax._
 
-object TypeClass extends App {
+object TypeClassIntro extends App {
   println("Hello " |+| "Cats!")
   val person = Person("Zhihong", "z.cheng@f5.com")
   // use typeclass method 1
