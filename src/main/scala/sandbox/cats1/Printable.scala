@@ -1,4 +1,4 @@
-package sandbox
+package cats1
 
 trait Printable[A] {
   def format(value: A): String

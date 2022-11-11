@@ -1,4 +1,4 @@
-package sandbox
+package cats1
 
 import cats.Show
 import cats.instances.int._ // for Show

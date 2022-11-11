@@ -1,4 +1,4 @@
-package sandbox
+package cats1
 
 // JSON AST
 sealed trait Json

@@ -1,4 +1,4 @@
-package sandbox
+package cats1
 
 import cats.Eq
 import cats.syntax.eq._
