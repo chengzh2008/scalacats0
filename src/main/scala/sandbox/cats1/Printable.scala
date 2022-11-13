@@ -1,7 +1,13 @@
 package cats1
 
-trait Printable[A] {
+trait Printable[A] { self =>
   def format(value: A): String
+
+  def contramap[B](f: B => A): Printable[B] =
+    new Printable[B] {
+      def format(v: B): String =
+        self.format(f(v))
+    }
 }
 
 object PrintableInstances {
@@ -25,6 +31,14 @@ object PrintableInstances {
   }
 }
 
+final case class Box[A](value: A)
+
+// implement BoxPrintable by using contramap and Printable
+object BoxPrintableInstance {
+  implicit def boxPrintable[A](implicit p: Printable[A]): Printable[Box[A]] =
+    p.contramap[Box[A]](_.value)
+}
+
 object Printable {
   def format[A](value: A)(implicit p: Printable[A]): String = p.format(value)
   // here format(value) or p.format(value) both works
@@ -46,6 +60,7 @@ final case class Cat(name: String, age: Int, color: String)
 
 import PrintableInstances._
 import PrintableSyntax._
+import BoxPrintableInstance._
 
 object PrintableTest extends App {
   println(Printable.format(4))
@@ -55,4 +70,9 @@ object PrintableTest extends App {
   Printable.print(cat)
 
   cat.print
+
+  val b1 = Box(3)
+  Printable.print(b1)
+  val b2 = Box("Hello world!")
+  Printable.print(b2)
 }
