@@ -1,3 +1,21 @@
+# Learning journey of Scala with Cats 
+## Table of Content
+
+[Chap 1 Introduction](./src/main/scala/sandbox/cats1)
+- [Type Class Introduction](./src/main/scala/sandbox/cats1/TypeClassIntro.scala)
+- [Exercise: Printable Library](./src/main/scala/sandbox/cats1/Printable.scala)
+- [Exercise: Cat Show](./src/main/scala/sandbox/cats1/CatShow.scala)
+- [Exercise: Equality, Liberty, and Felinity](./src/main/scala/sandbox/cats1/CatEq.scala)
+
+[Chap 2 Monoids and Semigroups](./src/main/scala/sandbox/cats2)
+- [Exercise: The Truth About Monoids](./src/main/scala/sandbox/cats2/BooleanMonoid.scala)
+- [Exercise: All Set for Monoids](./src/main/scala/sandbox/cats2/SetMonoid.scala)
+- [Exercise: Adding All The Things](./src/main/scala/sandbox/cats2/SuperAdder.scala)
+
+[Chap 3 Functors](./src/main/scala/sandbox/cats3)
+- [Exercise: Branching out with Functors](./src/main/scala/sandbox/cats3/TreeFunctor.scala)
+- [Exercise: Showing off with Contramap and Transformative Thinking with imap](./src/main/scala/sandbox/cats3/Codec.scala)
+
 # Scala with Cats Code
 
 Sandbox project for the exercises in the book [Scala with Cats][book].
