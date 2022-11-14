@@ -16,6 +16,9 @@
 - [Exercise: Branching out with Functors](./src/main/scala/sandbox/cats3/TreeFunctor.scala)
 - [Exercise: Showing off with Contramap and Transformative Thinking with imap](./src/main/scala/sandbox/cats3/Codec.scala)
 
+[Chap 4 Monads](./src/main/scala/sandbox/cats4)
+- [Exercise: Getting Func-y](./src/main/scala/sandbox/cats4/FunctorMonad.scala)
+
 # Scala with Cats Code
 
 Sandbox project for the exercises in the book [Scala with Cats][book].
