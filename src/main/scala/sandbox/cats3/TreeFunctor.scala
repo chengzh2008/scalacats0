@@ -28,7 +28,6 @@ import TreeFunctorInstances._
 
 object TreeFunctorTest extends App {
   val t = Tree.branch(Tree.branch(Tree.leaf(3), Tree.leaf(5)), Tree.leaf(6))
-  println(Functor[Tree].map(t)(_ * 2))
-  // compiler error
-  // println(t.map(_ * 2))
+  // Branch(Branch(Leaf(6),Leaf(10)),Leaf(12))
+  println(treeFunctor.map(t)(_ * 2))
 }

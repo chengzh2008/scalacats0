@@ -1,6 +1,6 @@
 package sandbox.cats4
 
-trait Monad[F[_]] {
+trait Monadd[F[_]] {
   def pure[A](a: A): F[A]
 
   def flatMap[A, B](v: F[A])(f: A => F[B]): F[B]
@@ -10,8 +10,8 @@ trait Monad[F[_]] {
 }
 
 object MonadInstances {
-  implicit def optionMonad: Monad[Option] =
-    new Monad[Option] {
+  implicit def optionMonad: Monadd[Option] =
+    new Monadd[Option] {
       def pure[A](a: A): Option[A] = Some(a)
       def flatMap[A, B](v: Option[A])(f: A => Option[B]): Option[B] =
         v match {
@@ -24,6 +24,8 @@ object MonadInstances {
 import MonadInstances._
 
 object FunctorMonadTest extends App {
+  // Some(1)
   println(optionMonad.pure(1))
+  // Some(2)
   println(optionMonad.map(Some(1))(n => n * 2))
 }

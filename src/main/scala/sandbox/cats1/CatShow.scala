@@ -18,9 +18,12 @@ import catShow._
 
 object CatShowTest extends App {
   val showInt = Show.apply[Int]
+  // 123
   println(123.show)
+  // 123
   println(showInt.show(123))
 
   val cat = Cat("Garfield", 41, "ginger and black")
+  // Garfield is a 41 year-old ginger and black cat.
   println(catShow.show(cat))
 }

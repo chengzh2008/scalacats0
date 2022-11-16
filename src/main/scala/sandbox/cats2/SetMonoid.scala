@@ -28,15 +28,14 @@ object MonoidSetTest extends App {
   val intUnionSetMonoid = unionMonoid[Int]
   val set1 = Set(1, 3)
   val set2 = Set(1, 5)
-  println(intUnionSetMonoid.combine(set1, set2))
   // Set(1, 3, 5)
+  println(intUnionSetMonoid.combine(set1, set2))
 
   val intIntersectionSetMonoid = intersectionSemigroup[Int]
-  println(intIntersectionSetMonoid.combine(set1, set2))
   // Set(1)
+  println(intIntersectionSetMonoid.combine(set1, set2))
 
   val intSymDiffSetMonoid = symDiffMonoid[Int]
-  println(intSymDiffSetMonoid.combine(set1, set2))
   // Set(3, 5)
-
+  println(intSymDiffSetMonoid.combine(set1, set2))
 }

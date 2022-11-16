@@ -63,16 +63,22 @@ import PrintableSyntax._
 import BoxPrintableInstance._
 
 object PrintableTest extends App {
+  // 4
   println(Printable.format(4))
+  // 4
   Printable.print(4)
 
   val cat = Cat("Garfield", 41, "ginger and black")
+  // Garfield is a 41 year-old ginger and black cat.
   Printable.print(cat)
 
+  // Garfield is a 41 year-old ginger and black cat.
   cat.print
 
   val b1 = Box(3)
+  // 3
   Printable.print(b1)
   val b2 = Box("Hello world!")
+  // Hello world!
   Printable.print(b2)
 }

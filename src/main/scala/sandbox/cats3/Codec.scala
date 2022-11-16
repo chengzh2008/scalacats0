@@ -48,10 +48,13 @@ object CodecInstances {
 import CodecInstances._
 
 object CodecTest extends App {
+  // 1234.4
   println(Codec.encode(1234.4))
+  // 1234.0
   println(Codec.decode[Double]("1234"))
-
+  // 13.4
   println(Codec.encode(Box(13.4)))
+  // Box(123.4)
   println(Codec.decode[Box[Double]]("123.4"))
 
 }

@@ -23,11 +23,14 @@ import MonoidInstance._
 
 object SuperAdderTest extends App {
   val l1 = List(1, 2, 4, 5)
+  // 12
   println(SuperAdder.add(l1))
 
   val l2 = List(Some(1), Some(2), None, Some(5))
+  // Some(8)
   println(SuperAdder.add(l2))
 
   val l3 = List(Order(1, 2), Order(3, 5))
+  // Order(4.0,7.0)
   println(SuperAdder.add(l3))
 }

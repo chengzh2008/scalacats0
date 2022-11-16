@@ -67,16 +67,23 @@ import JsonSyntax._
 
 object TypeClassTest extends App {
   println("Hello " |+| "Cats!")
-  val person = Person("Zhihong", "z.cheng@f5.com")
+  // Hello Cats!
+  val person = Person("cheng", "abcdef@dot.com")
   // use typeclass method 1
+  // JsObject(Map(name -> JsString(cheng), email -> JsString(abcdef@dot.com)))
   println(Json.toJson(person))
   // use typeclass method 2
+  // JsObject(Map(name -> JsString(cheng), email -> JsString(abcdef@dot.com)))
   println(person.toJson)
 
   // implicitely
+  // cats1.JsonWriterInstances$$anon$1@44db5e98
   println(implicitly[JsonWriter[String]])
 
+  // JsObject(Map(name -> JsString(cheng), email -> JsString(abcdef@dot.com)))
   println(Option(person).toJson)
+  // JsNull
   println((None: Option[Person]).toJson)
+  // JsNull
   println((None: Option[String]).toJson)
 }
