@@ -19,6 +19,8 @@
 [Chap 4 Monads](./src/main/scala/sandbox/cats4)
 - [Exercise: Getting Func-y](./src/main/scala/sandbox/cats4/FunctorMonad.scala)
 - [Exercise: Monadic Secret Identities](./src/main/scala/sandbox/cats4/IdMonad.scala)
+- [Exercise: Abastracting](./src/main/scala/sandbox/cats4/Abstracting.scala)
+- [Exercise: Safer Folding using Eval](./src/main/scala/sandbox/cats4/SafeFoldingEval.scala)
 
 # Scala with Cats Code
 
