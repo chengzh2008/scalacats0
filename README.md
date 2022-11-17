@@ -21,6 +21,7 @@
 - [Exercise: Monadic Secret Identities](./src/main/scala/sandbox/cats4/IdMonad.scala)
 - [Exercise: Abastracting](./src/main/scala/sandbox/cats4/Abstracting.scala)
 - [Exercise: Safer Folding using Eval](./src/main/scala/sandbox/cats4/SafeFoldingEval.scala)
+- [Exercise: Show Your Working](./src/main/scala/sandbox/cats4/ShowYourWorking.scala)
 
 # Scala with Cats Code
 
