@@ -22,6 +22,7 @@
 - [Exercise: Abastracting](./src/main/scala/sandbox/cats4/Abstracting.scala)
 - [Exercise: Safer Folding using Eval](./src/main/scala/sandbox/cats4/SafeFoldingEval.scala)
 - [Exercise: Show Your Working](./src/main/scala/sandbox/cats4/ShowYourWorking.scala)
+- [Exercise: Post-Order Calculator](./src/main/scala/sandbox/cats4/PostOrderCalculator.scala)
 
 # Scala with Cats Code
 
