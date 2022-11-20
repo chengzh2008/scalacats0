@@ -23,6 +23,10 @@
 - [Exercise: Safer Folding using Eval](./src/main/scala/sandbox/cats4/SafeFoldingEval.scala)
 - [Exercise: Show Your Working](./src/main/scala/sandbox/cats4/ShowYourWorking.scala)
 - [Exercise: Post-Order Calculator](./src/main/scala/sandbox/cats4/PostOrderCalculator.scala)
+- [Exercise: Branching out Further with Monads](./src/main/scala/sandbox/cats4/BranchFurtherMonad.scala)
+
+[Chap 5 Monad Transformers](./src/main/scala/sandbox/cats5)
+- [Exercise: Transform and Roll Out](./src/main/scala/sandbox/cats5/TransformRollOut.scala)
 
 # Scala with Cats Code
 
