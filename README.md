@@ -31,6 +31,8 @@
 [Chap 7 Foldable and Traverse](./src/main/scala/sandbox/cats7)
 - [Exercise: Scaf-fold-ing Other Methods](./src/main/scala/sandbox/cats7/ScaffoldingMethod.scala)
 
+[Chap 8 Case Study: Testing Asynchronous Code](./src/main/scala/sandbox/cats8)
+
 # Scala with Cats Code
 
 Sandbox project for the exercises in the book [Scala with Cats][book].
