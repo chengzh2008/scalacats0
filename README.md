@@ -28,6 +28,9 @@
 [Chap 5 Monad Transformers](./src/main/scala/sandbox/cats5)
 - [Exercise: Transform and Roll Out](./src/main/scala/sandbox/cats5/TransformRollOut.scala)
 
+[Chap 7 Foldable and Traverse](./src/main/scala/sandbox/cats7)
+- [Exercise: Scaf-fold-ing Other Methods](./src/main/scala/sandbox/cats7/ScaffoldingMethod.scala)
+
 # Scala with Cats Code
 
 Sandbox project for the exercises in the book [Scala with Cats][book].
