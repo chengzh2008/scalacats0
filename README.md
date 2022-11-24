@@ -33,6 +33,8 @@
 
 [Chap 8 Case Study: Testing Asynchronous Code](./src/main/scala/sandbox/cats8)
 
+[Chap 9 Case Study: Map-Reduce](./src/main/scala/sandbox/cats9)
+
 # Scala with Cats Code
 
 Sandbox project for the exercises in the book [Scala with Cats][book].
