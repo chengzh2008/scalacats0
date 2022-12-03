@@ -35,6 +35,8 @@
 
 [Chap 9 Case Study: Map-Reduce](./src/main/scala/sandbox/cats9)
 
+[Chap 10 Case Study: Validation](./src/main/scala/sandbox/cats10)
+
 # Scala with Cats Code
 
 Sandbox project for the exercises in the book [Scala with Cats][book].
