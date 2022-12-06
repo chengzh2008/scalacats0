@@ -1,9 +1,19 @@
 package sandbox.cats10
 
 import cats.data.NonEmptyList
+import cats.data.Kleisli
 
 object UserValidation {
   type Errors = NonEmptyList[String]
+
+  type Result[A] = Either[Errors, A]
+
+  type Check[A, B] = Kleisli[Result, A, B]
+
+  def check[A, B](f: A => Result[B]): Check[A, B] = Kleisli(f)
+
+  def checkPred[A](pred: Predicate[Errors, A]): Check[A, A] =
+    Kleisli[Result, A, A](pred.run)
 
   def error(s: String): NonEmptyList[String] =
     NonEmptyList(s, Nil)
@@ -34,49 +44,46 @@ object UserValidation {
 }
 
 import UserValidation._
-import cats.data.Validated
 import cats.syntax.apply._ // for mapN
-import cats.syntax.validated._ // for validNel
+import cats.syntax.either._ // for validNel
 
 object UserValidationTest extends App {
-  val checkUsername: Check[Errors, String, String] =
-    Check(longerThan(3) and alphanumeric)
+  val checkUsername: Check[String, String] =
+    checkPred(longerThan(3) and alphanumeric)
 
-  val splitEmail: Check[Errors, String, (String, String)] =
-    Check(str => {
+  val splitEmail: Check[String, (String, String)] =
+    check(str =>
       str.split('@') match {
-        case Array(name, domain) =>
-          (name, domain).validNel[String]
-        case _ =>
-          "Must contain a single @ character".invalidNel[(String, String)]
+        case Array(name, domain) => (name, domain).rightNel
+        case _                   => "Must contain a single @ character".leftNel
       }
-    })
+    )
 
-  val checkLeft: Check[Errors, String, String] = Check(longerThan(0))
-  val checkRight: Check[Errors, String, String] = Check(
+  val checkLeft: Check[String, String] = checkPred(longerThan(0))
+  val checkRight: Check[String, String] = checkPred(
     longerThan(3) and containsOnce('.')
   )
 
-  val joinEmail: Check[Errors, (String, String), String] =
-    Check { tup =>
+  val joinEmail: Check[(String, String), String] =
+    check { tup =>
       tup match {
         case (l, r) =>
           (checkLeft(l), checkRight(r)).mapN(_ + "@" + _)
       }
     }
 
-  val checkEmail: Check[Errors, String, String] =
+  val checkEmail: Check[String, String] =
     splitEmail andThen joinEmail
 
   final case class User(username: String, email: String)
 
-  def createUser(username: String, email: String): Validated[Errors, User] =
+  def createUser(username: String, email: String): Result[User] =
     (checkUsername(username), checkEmail(email)).mapN(User)
 
-  // Valid(User(abcd,abc@def.com))
+  // Right(User(abcd,abc@def.com))
   println(createUser("abcd", "abc@def.com"))
 
-  // Invalid(NonEmptyList(Must be longer than 3 characters, Must contain the character . only once))
+  // Left(NonEmptyList(Must be longer than 3 characters))
   println(createUser("abc", "abc@defcom"))
 
 }
