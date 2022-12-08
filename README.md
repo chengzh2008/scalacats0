@@ -37,6 +37,8 @@
 
 [Chap 10 Case Study: Validation](./src/main/scala/sandbox/cats10)
 
+[Chap 11 Case Study: CRDTs(Commutative Replicated Data Types)](./src/main/scala/sandbox/cats11)
+
 # Scala with Cats Code
 
 Sandbox project for the exercises in the book [Scala with Cats][book].
