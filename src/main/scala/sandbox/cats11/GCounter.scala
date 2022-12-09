@@ -85,11 +85,51 @@ object GGCounterInstance {
         f.values.toList.combineAll
     }
 
+  implicit def ggcounterInstance[F[_, _], K, V](implicit
+      kvs: KVStore[F],
+      km: CommutativeMonoid[F[K, V]]
+  ) =
+    new GGCounter[F, K, V] {
+      def increment(f: F[K, V])(k: K, v: V)(implicit
+          m: CommutativeMonoid[V]
+      ): F[K, V] =
+        kvs.put(f)(k, v)
+      def merge(f1: F[K, V], f2: F[K, V])(implicit
+          b: BoundedSemiLattice[V]
+      ): F[K, V] =
+        f1 |+| f2
+      def total(f: F[K, V])(implicit m: CommutativeMonoid[V]): V =
+        kvs.values(f).combineAll
+    }
+
+}
+
+trait KVStore[F[_, _]] {
+  def put[K, V](f: F[K, V])(k: K, v: V): F[K, V]
+  def get[K, V](f: F[K, V])(k: K): Option[V]
+  def getOrElse[K, V](f: F[K, V])(k: K, v: V): V =
+    get(f)(k).getOrElse(v)
+  def values[K, V](f: F[K, V]): List[V]
+
+}
+
+object KVStoreInstance {
+  implicit val mapKVStoreInstance: KVStore[Map] = {
+    new KVStore[Map] {
+      def put[K, V](f: Map[K, V])(k: K, v: V): Map[K, V] =
+        f + (k -> v)
+      def get[K, V](f: Map[K, V])(k: K): Option[V] =
+        f.get(k)
+      def values[K, V](f: Map[K, V]): List[V] =
+        f.values.toList
+    }
+  }
 }
 
 object GCounter extends App {
   import GGCounterInstance._
   import BoundedSemiLatticeInstances._
+  import cats.instances.int._
 
   val g1 = Map("a" -> 7, "b" -> 3)
   val g2 = Map("a" -> 2, "b" -> 5)
@@ -98,7 +138,7 @@ object GCounter extends App {
   val merged = counter.merge(g1, g2)
   println(merged)
   println(merged.values)
-  val total = counter.total(merged)
-  // 10 TODO which is not correct, why?
+  val total = counter.total(merged)(catsKernelStdGroupForInt)
+  // 12
   println(total)
 }
